@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
   [SerializeField] private int _width, _height;
-  [SerializeField] private Tile _tilePrefab;
+  [SerializeField] private Tile _PlacementTile, _PathTile;
   
   [SerializeField] private Transform _cam;
 
@@ -17,11 +17,10 @@ public class GridManager : MonoBehaviour
   void GenerateGrid(){
      for(int x = 0; x < _width; x++ ){
       for(int y = 0; y < _height; y++){
-         var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
+         var randomTile = Random.Range(0,6) == 3 ? _PathTile : _PlacementTile;
+         var spawnedTile = Instantiate(randomTile, new Vector3(x, y), Quaternion.identity);
          spawnedTile.name = $"Tile {x} {y}";
-
-         var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
-         spawnedTile.Init(isOffset);
+         spawnedTile.Init(x,y);
       }
     }
     _cam.transform.position = new Vector3((float)_width/2 -0.5f, (float)_height/2 -0.5f, -10);
