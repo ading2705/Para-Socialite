@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeSource: {fileID: 2096279296}
   effectSource: {fileID: 2096279296}
-  towerTheme: {fileID: 8300000, guid: 0d36c535065436e459198b9e880c5671, type: 3}
+  towerTheme: {fileID: 8300000, guid: a4feef9b8167b0a4fa7c95a781cf60e4, type: 3}
   narrativeTheme: {fileID: 8300000, guid: 652f21f4b3821094e9627f31b256fbed, type: 3}
   towerSelect: {fileID: 8300000, guid: 4ecb3ca3587e86b439403a4a817c63f5, type: 3}
   towerPlace: {fileID: 8300000, guid: c309fe0392f806145ba5f9014326c35f, type: 3}
