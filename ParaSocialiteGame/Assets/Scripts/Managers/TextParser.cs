@@ -5,7 +5,6 @@ using UnityEngine;
 public class TextParser : MonoBehaviour
 {
     private static TextParser _instance;
-    [SerializeField] TextAsset test;
     public static TextParser Instance { get { return _instance; } }
     // Start is called before the first frame update
     void Start()
