@@ -9,19 +9,20 @@ public class DialogueUI : MonoBehaviour
 {
     private ScrollingText scrollingText;
     [SerializeField] private TMP_Text textLabel;
-    [SerializeField] private DialogueObject testDialogue;
     [SerializeField] private GameObject dialogueBox;
+
+    public bool IsOpen { get; private set; }
 
 
     void Start()
     {
         scrollingText = GetComponent<ScrollingText>();
         CloseDialogue();
-        ShowDialogue(testDialogue);
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
     {
+        IsOpen = true;
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
     }
@@ -41,6 +42,7 @@ public class DialogueUI : MonoBehaviour
     {
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
+        IsOpen = false;
     }
 
 }

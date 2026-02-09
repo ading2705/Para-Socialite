@@ -7,16 +7,13 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager _instance;
     public static DialogueManager Instance { get { return _instance; } }
 
+    [SerializeField] DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable Interactable { get; set; }
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        _instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

@@ -956,6 +956,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textLabel: {fileID: 1836655389}
+  testDialogue: {fileID: 0}
+  dialogueBox: {fileID: 1313671150}
 --- !u!114 &2081491366
 MonoBehaviour:
   m_ObjectHideFlags: 0

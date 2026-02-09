@@ -15,7 +15,6 @@ public class ScrollingText : MonoBehaviour
     public IEnumerator TypeText(string line, TMP_Text textLabel)
     {
         textLabel.text = string.Empty;
-        yield return new WaitForSeconds(2);
         float t = 0;
         int charIndex = 0;
 
