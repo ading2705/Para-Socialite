@@ -7,6 +7,7 @@ public class GridManager : MonoBehaviour
   [SerializeField] private int _width, _height;
   [SerializeField] private Tile _PlacementTile, _PathTile;
 
+
   [SerializeField] private Transform _cam;
 
   void Start()
@@ -29,6 +30,4 @@ public class GridManager : MonoBehaviour
     }
     _cam.transform.position = new Vector3((float)_width / 2 - 0.5f, (float)_height / 2 - 0.5f, -10);
   }
-
-
 }
