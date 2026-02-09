@@ -10,12 +10,13 @@ public class DialogueUI : MonoBehaviour
     private ScrollingText scrollingText;
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private GameObject dialogueBox;
-
+    private ResponseHandler responseHandler;
 
 
     void Start()
     {
         scrollingText = GetComponent<ScrollingText>();
+        responseHandler = GetComponent<ResponseHandler>();
         CloseDialogue();
     }
 
@@ -28,13 +29,23 @@ public class DialogueUI : MonoBehaviour
 
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
     {
-        foreach (string dialogue in dialogueObject.Dialogue)
+        for (int i = 0; i < dialogueObject.Dialogue.Length; i++)
         {
+            string dialogue = dialogueObject.Dialogue[i];
             yield return scrollingText.Run(dialogue, textLabel);
-            yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space));
-        }
 
-        CloseDialogue();
+            if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space));
+
+        }
+        if (dialogueObject.HasResponses)
+        {
+            responseHandler.ShowResponses(dialogueObject.Responses);
+        }
+        else
+        {
+            CloseDialogue();
+        }
     }
 
     private void CloseDialogue()

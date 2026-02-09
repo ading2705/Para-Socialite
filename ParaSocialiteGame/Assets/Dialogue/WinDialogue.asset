@@ -10,13 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 793532b6c172be64e875532cc33036c6, type: 3}
-  m_Name: BranchingDialogue
+  m_Name: WinDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - This is a branching dialogue.
-  - Do you want to win or lose?
-  responses:
-  - responseText: Win
-    dialogueObject: {fileID: 11400000, guid: e1fc220f758d34549be01de792524014, type: 2}
-  - responseText: Lose
-    dialogueObject: {fileID: 11400000, guid: 81fc5206c62256a47aa59bf1a4a72108, type: 2}
+  - Yay you won!
+  - You get a turtle.
+  responses: []
