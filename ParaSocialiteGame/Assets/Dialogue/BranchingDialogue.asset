@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793532b6c172be64e875532cc33036c6, type: 3}
   m_Name: BranchingDialogue
   m_EditorClassIdentifier: 
-  dialogue: []
+  dialogue:
+  - This is a branching dialogue.
+  - Choose blue to win and red to lose.
