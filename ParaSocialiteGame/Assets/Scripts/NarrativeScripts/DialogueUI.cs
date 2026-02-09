@@ -11,7 +11,6 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private GameObject dialogueBox;
 
-    public bool IsOpen { get; private set; }
 
 
     void Start()
@@ -22,7 +21,7 @@ public class DialogueUI : MonoBehaviour
 
     public void ShowDialogue(DialogueObject dialogueObject)
     {
-        IsOpen = true;
+        DialogueManager.Instance.OpenDialogue();
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
     }
@@ -42,7 +41,7 @@ public class DialogueUI : MonoBehaviour
     {
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
-        IsOpen = false;
+        DialogueManager.Instance.CloseDialogue();
     }
 
 }

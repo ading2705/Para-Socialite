@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public void Interact(GameObject interactable);
+    public void Interact(InteractableObject interactable);
 }
