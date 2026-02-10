@@ -38,6 +38,9 @@ public class ResponseHandler : MonoBehaviour
     private void OnPickedResponse(Response response)
     {
         responseBox.gameObject.SetActive(false);
+        // For tech demo - showing "win" or "lose"
+        // StateManager.Instance.GameEnded();
+        // StateManager.Instance.WinOrLose(response.ResponseText == "Win");
         foreach (GameObject button in buttons)
         {
             Destroy(button);

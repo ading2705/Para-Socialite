@@ -11,13 +11,10 @@ public class TurretBehavior : MonoBehaviour
     void OnMouseEnter()
     {
         _highlight.SetActive(true);
-        AudioController.Instance.PlayEffect("select");
     }
 
     void OnMouseExit()
     {
         _highlight.SetActive(false);
-        AudioController.Instance.PlayEffect("place");
-
     }
 }

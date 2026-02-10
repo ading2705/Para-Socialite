@@ -13,7 +13,6 @@ public class GridManager : MonoBehaviour
   void Start()
   {
     GenerateGrid();
-    AudioController.Instance.PlayTheme("tower");
   }
 
   void GenerateGrid()
