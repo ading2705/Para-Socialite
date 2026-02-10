@@ -6,8 +6,7 @@ public class GridManager : MonoBehaviour
 {
   [SerializeField] private int _width, _height;
   [SerializeField] private Tile _PlacementTile, _PathTile;
-
-
+  
   [SerializeField] private Transform _cam;
 
   void Start()
