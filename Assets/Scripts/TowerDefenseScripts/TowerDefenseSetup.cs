@@ -6,6 +6,6 @@ public class TowerDefenseSetup : MonoBehaviour
 {
     void Start()
     {
-        AudioController.Instance.PlayTheme("tower");
+        // AudioController.Instance.PlayTheme("tower");
     }
 }
