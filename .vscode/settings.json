@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ParaSocialiteGame.sln"
+    "dotnet.defaultSolution": "Para-Socialite.sln"
 }
