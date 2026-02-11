@@ -25,6 +25,6 @@ public class TurretSpawner : MonoBehaviour
     {
         
         Instantiate(towerSpawned, transform.position, Quaternion.identity);
-        
+        AudioController.Instance.PlayPickUp();
     }
 }

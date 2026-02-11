@@ -38,6 +38,16 @@ public class AudioController : MonoBehaviour
         effectSource.PlayOneShot(effects[name]);
     }
 
+    public void PlayPlacement()
+    {
+        effectSource.PlayOneShot(effects["place"]);
+    }
+    public void PlayPickUp()
+    {
+        effectSource.PlayOneShot(effects["select"]);
+    }
+
+
     // Plays a looping theme song given a name 
     // Note: At the moment the theme MUST be initalized within this script and added to the dictionary
 
