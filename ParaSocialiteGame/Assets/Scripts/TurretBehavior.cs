@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class TurretBehavior : MonoBehaviour
 {
-    // Optional visual shown when the mouse hovers a turret in scene/game view.
     [SerializeField] private GameObject _highlight;
-    // HP cost consumed when placement is confirmed.
-    [SerializeField, Min(0)] private int _healthCost = 1;
 
     // Read by DragController during confirm.
     public int HealthCost => _healthCost;
