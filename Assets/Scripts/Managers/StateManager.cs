@@ -16,8 +16,8 @@ public enum SanityState
 
 public class StateManager : MonoBehaviour
 {
-    private StateManager _instance;
-    public StateManager Instance { get { return _instance; } }
+    private static StateManager _instance;
+    public static StateManager Instance { get { return _instance; } }
     [SerializeField] private int maxSanity;
     private int Sanity;
     private bool playing;
@@ -54,6 +54,10 @@ public class StateManager : MonoBehaviour
         return win;
     }
 
+    public int GetMaxSanity()
+    {
+        return maxSanity;
+    }
     public int CurrentSanity()
     {
         return Sanity;
