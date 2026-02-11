@@ -9,55 +9,35 @@ public class AudioController : MonoBehaviour
     public AudioSource themeSource;
     public AudioSource effectSource;
 
-    public AudioClip towerTheme, narrativeTheme;
-    public AudioClip towerSelect, towerPlace;
-
-    // Dictionaries for easier use
-    public Dictionary<string, AudioClip> themes = new Dictionary<string, AudioClip>();
-    public Dictionary<string, AudioClip> effects = new Dictionary<string, AudioClip>();
+    public AudioObject[] themes;
+    public AudioObject[] effects;
 
     // Start is called before the first frame update
     void Awake()
     {
         _instance = this;
-        themes["tower"] = towerTheme;
-        themes["narrative"] = narrativeTheme;
-        effects["select"] = towerSelect;
-        effects["place"] = towerPlace;
     }
-
-    // // Update is called once per frame
-    void Update()
-    {
-    }
-
     // Plays a sound effect given a name 
-    // Note: At the moment the sound effect MUST be initalized within this script and added to the dictionary
     public void PlayEffect(string name)
     {
-        effectSource.PlayOneShot(effects[name]);
+        foreach (AudioObject obj in effects)
+        {
+            if (obj.Name == name) { effectSource.PlayOneShot(obj.Audio); return; }
+        }
+        Debug.LogError("The audio object with name " + name + "does not exist in the effects array.");
     }
 
-    public void PlayPlacement()
+    // Plays a looping theme song given the sanity level
+    public void PlayTheme(int sanity)
     {
-        effectSource.PlayOneShot(effects["place"]);
-    }
-    public void PlayPickUp()
-    {
-        effectSource.PlayOneShot(effects["select"]);
-    }
-
-
-    // Plays a looping theme song given a name 
-    // Note: At the moment the theme MUST be initalized within this script and added to the dictionary
-
-    public void PlayTheme(string name)
-    {
+        if (sanity >= themes.Length)
+        {
+            Debug.LogError("Invalid sanity level called.");
+        }
         // stop current audio
         themeSource.Stop();
-        themeSource.clip = themes[name];
+        themeSource.clip = themes[sanity].Audio;
         themeSource.Play();
         themeSource.loop = true;
-
     }
 }

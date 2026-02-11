@@ -23,7 +23,6 @@ public class ScrollingText : MonoBehaviour
             t += Time.deltaTime * typeSpeed;
             charIndex = Mathf.FloorToInt(t);
             charIndex = Mathf.Clamp(charIndex, 0, line.Length);
-
             textLabel.text = line.Substring(0, charIndex);
             yield return null;
         }
