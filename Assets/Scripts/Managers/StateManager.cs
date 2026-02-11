@@ -6,6 +6,7 @@ using UnityEngine;
 This singleton holds information about all the important states of the game, namely:
 Sanity - stores the player's current sanity throughout the game
 Win/Lose - an interruption for winning or losing
+IsFastForwarding - for the tower defense section, increases the speed of all processes
 */
 public enum SanityState
 {
@@ -16,6 +17,8 @@ public enum SanityState
 
 public class StateManager : MonoBehaviour
 {
+    [SerializeField] private float FastForwardSpeed;
+    private bool isFastForwarding;
     private StateManager _instance;
     public StateManager Instance { get { return _instance; } }
     [SerializeField] private int maxSanity;
@@ -30,6 +33,7 @@ public class StateManager : MonoBehaviour
         Sanity = maxSanity;
         playing = false;
         win = false;
+        isFastForwarding = false;
     }
     void Update()
     {
@@ -75,5 +79,15 @@ public class StateManager : MonoBehaviour
     public void HealSanity(int amount)
     {
         Sanity = Mathf.Min(Sanity + amount, maxSanity);
+    }
+
+    public void SetFastForward(bool state)
+    {
+        isFastForwarding = state;
+    }
+
+    public float FastForwarding()
+    {
+        return isFastForwarding ? FastForwardSpeed : 1.0f;
     }
 }
