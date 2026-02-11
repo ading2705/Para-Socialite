@@ -518,10 +518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeSource: {fileID: 824513225}
   effectSource: {fileID: 824513225}
-  towerTheme: {fileID: 8300000, guid: a4feef9b8167b0a4fa7c95a781cf60e4, type: 3}
-  narrativeTheme: {fileID: 8300000, guid: 9fa696e3ef345334fb8aa041dc2da37d, type: 3}
-  towerSelect: {fileID: 8300000, guid: 4ecb3ca3587e86b439403a4a817c63f5, type: 3}
-  towerPlace: {fileID: 8300000, guid: c309fe0392f806145ba5f9014326c35f, type: 3}
+  themes: []
+  effects: []
 --- !u!1 &909945013
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +731,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 125, y: -25}
-  m_SizeDelta: {x: 230, y: 50}
+  m_SizeDelta: {x: 230, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065979054
 MonoBehaviour:
@@ -782,8 +780,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1469,8 +1467,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
