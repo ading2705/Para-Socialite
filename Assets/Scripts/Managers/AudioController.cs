@@ -17,13 +17,12 @@ public class AudioController : MonoBehaviour
     {
         _instance = this;
     }
-
     // Plays a sound effect given a name 
     public void PlayEffect(string name)
     {
         foreach (AudioObject obj in effects)
         {
-            if (obj.Name == name) effectSource.PlayOneShot(obj.Audio);
+            if (obj.Name == name) { effectSource.PlayOneShot(obj.Audio); return; }
         }
         Debug.LogError("The audio object with name " + name + "does not exist in the effects array.");
     }
@@ -31,7 +30,8 @@ public class AudioController : MonoBehaviour
     // Plays a looping theme song given the sanity level
     public void PlayTheme(int sanity)
     {
-        if (sanity >= themes.Length){
+        if (sanity >= themes.Length)
+        {
             Debug.LogError("Invalid sanity level called.");
         }
         // stop current audio

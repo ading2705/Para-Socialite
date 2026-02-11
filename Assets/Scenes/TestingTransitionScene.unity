@@ -409,10 +409,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeSource: {fileID: 1921886395}
   effectSource: {fileID: 1921886395}
-  towerTheme: {fileID: 8300000, guid: a4feef9b8167b0a4fa7c95a781cf60e4, type: 3}
-  narrativeTheme: {fileID: 8300000, guid: 9fa696e3ef345334fb8aa041dc2da37d, type: 3}
-  towerSelect: {fileID: 8300000, guid: 4ecb3ca3587e86b439403a4a817c63f5, type: 3}
-  towerPlace: {fileID: 8300000, guid: c309fe0392f806145ba5f9014326c35f, type: 3}
+  themes:
+  - {fileID: 11400000, guid: 2133c98ba9750d2488bf485b64ae6512, type: 2}
+  effects: []
 --- !u!4 &1921886394
 Transform:
   m_ObjectHideFlags: 0

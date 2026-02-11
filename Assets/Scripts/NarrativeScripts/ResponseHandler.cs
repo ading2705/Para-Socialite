@@ -39,8 +39,9 @@ public class ResponseHandler : MonoBehaviour
     {
         responseBox.gameObject.SetActive(false);
         // For tech demo - showing "win" or "lose"
-        // StateManager.Instance.GameEnded();
-        // StateManager.Instance.WinOrLose(response.ResponseText == "Win");
+        if(response.ResponseText == "Lose"){
+            AudioController.Instance.PlayTheme(1);
+        }
         foreach (GameObject button in buttons)
         {
             Destroy(button);

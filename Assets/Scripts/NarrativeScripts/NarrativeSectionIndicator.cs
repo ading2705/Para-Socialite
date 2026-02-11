@@ -10,6 +10,7 @@ public class NarrativeSectionIndicator : MonoBehaviour
     {
         // AudioController.Instance.PlayTheme("narrative");
         StartCoroutine(FadeIn());
+        AudioController.Instance.PlayTheme(0);
     }
 
     private IEnumerator FadeIn()
