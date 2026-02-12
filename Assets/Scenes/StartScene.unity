@@ -370,7 +370,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
-<<<<<<< Updated upstream
 --- !u!1 &135770859
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,8 +504,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135770859}
   m_CullTransparentMesh: 1
-=======
->>>>>>> Stashed changes
 --- !u!1 &295386749
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +817,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093323146}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
 --- !u!1 &1459515277
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,8 +938,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459515277}
   m_CullTransparentMesh: 1
-=======
->>>>>>> Stashed changes
 --- !u!1 &1711163303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,10 +1034,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 76812331}
-<<<<<<< Updated upstream
   - {fileID: 1459515278}
-=======
->>>>>>> Stashed changes
   - {fileID: 392839744}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
