@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7616702513319726855}
+  hitCount: 3
   moveSpeed: 1
 --- !u!114 &6234885076688652054
 MonoBehaviour:
@@ -197,3 +198,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 5
+  healPoints: 5

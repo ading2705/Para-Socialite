@@ -164,6 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7616702513319726855}
+  hitCount: 2
+  SanityValue: {fileID: 0}
   moveSpeed: 2
 --- !u!114 &6444148890742847957
 MonoBehaviour:

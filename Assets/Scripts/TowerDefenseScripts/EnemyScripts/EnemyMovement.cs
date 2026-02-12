@@ -7,6 +7,8 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private int hitCount;
+    private StateManager SanityValue;
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
@@ -19,6 +21,8 @@ public class EnemyMovement : MonoBehaviour
     {
         baseSpeed = moveSpeed;
         target = LevelManager.main.path[pathIndex];
+         GameObject stateManager = GameObject.FindWithTag("HealthBar");
+         SanityValue = stateManager.GetComponent<StateManager>();
     }
     private void Update()
     {
@@ -30,6 +34,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
+                SanityValue.LoseSanity(hitCount);
                 return;
             }
             else

@@ -27,6 +27,9 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesLeftToSpawn;
     private float eps; //enemies per second
     private bool isSpawning = false;
+    public GameObject deactivateSpawner1;
+    public GameObject deactivateSpawner2;
+    public GameObject deactivateSpawner3;
 
     private void Awake()
     {
@@ -40,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(StartWave());
     }
 
-    //In future with menu, StartWave() will trigger on button press instead of start
+    
     private void Update()
     {
         if(!isSpawning) return;
@@ -49,6 +52,9 @@ public class EnemySpawner : MonoBehaviour
 
         if(timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
         {
+            deactivateSpawner1.SetActive(false);
+            deactivateSpawner2.SetActive(false);
+            deactivateSpawner3.SetActive(false);
             SpawnEnemy();
             Debug.Log("Spawn Enemy");
             enemiesLeftToSpawn--;
@@ -59,6 +65,9 @@ public class EnemySpawner : MonoBehaviour
         if(enemiesAlive == 0 && enemiesLeftToSpawn == 0)
         {
             EndWave();
+            deactivateSpawner1.SetActive(true);
+            deactivateSpawner2.SetActive(true);
+            deactivateSpawner3.SetActive(true);
         }
 
     }

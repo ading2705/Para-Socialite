@@ -14,11 +14,13 @@ public class DragController : MonoBehaviour
     private Vector2 _screenPosition;
     private Vector3 _worldPosition;
     private Draggable _lastDragged;
+    private StateManager SanityValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+         GameObject stateManager = GameObject.FindWithTag("HealthBar");
+         SanityValue = stateManager.GetComponent<StateManager>();
     }
     
     void Awake(){
@@ -114,7 +116,8 @@ public class DragController : MonoBehaviour
         deactivateSpawner1.SetActive(true);
         deactivateSpawner2.SetActive(true);
         deactivateSpawner3.SetActive(true);
-        _lastDragged.gameObject.tag = "Drop Invalid";
+        SanityValue.SpendSanity(2);
+
         
     }
 

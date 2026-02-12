@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f0ffe48636b64408f0ae3796dc8acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: SceneForGameVer4
+  nextScene: CompleteTDSceneWithAllFeatures
 --- !u!4 &2002374471
 Transform:
   m_ObjectHideFlags: 0
