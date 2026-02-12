@@ -224,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &270711301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 320588122}
   - component: {fileID: 320588121}
   - component: {fileID: 320588124}
+  - component: {fileID: 320588125}
   m_Layer: 0
   m_Name: TurretSpawn2
   m_TagString: Untagged
@@ -764,6 +765,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
+--- !u!114 &320588125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320588120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dcf7b4777d86d439a6e4a790b5e376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretBox: {fileID: 270711300}
+  titleLabel: {fileID: 1717750770}
+  descriptionLabel: {fileID: 1766989010}
+  turretTitle: Forest green turret
+  turretDescription: Like grass! You should touch it.
 --- !u!1 &446364441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1090,7 @@ GameObject:
   - component: {fileID: 1084744459}
   - component: {fileID: 1084744458}
   - component: {fileID: 1084744461}
+  - component: {fileID: 1084744462}
   m_Layer: 0
   m_Name: TurretSpawn3
   m_TagString: Untagged
@@ -1197,6 +1216,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
+--- !u!114 &1084744462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084744457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dcf7b4777d86d439a6e4a790b5e376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretBox: {fileID: 270711300}
+  titleLabel: {fileID: 1717750770}
+  descriptionLabel: {fileID: 1766989010}
+  turretTitle: Greener Turret
+  turretDescription: MY EYESSSSS
 --- !u!1 &1100999119
 GameObject:
   m_ObjectHideFlags: 0
