@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class SpriteManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static SpriteManager _instance;
+    public static SpriteManager Instance { get { return _instance; } }
+
+    public Sprite defaultSprite;
+    public Sprite sanitySprite;
+
+    private void Start()
     {
-        
+        Instance = _instance;
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private void
+
 }
