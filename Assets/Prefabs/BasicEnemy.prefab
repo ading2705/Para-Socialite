@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8851699581012798615}
   - component: {fileID: 7616702513319726855}
   - component: {fileID: 8376868907265695400}
+  - component: {fileID: 6444148890742847957}
   - component: {fileID: 4301072478594205967}
   m_Layer: 7
   m_Name: BasicEnemy
@@ -30,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 8293196996684663753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07, y: 3.96, z: 0}
-  m_LocalScale: {x: 0.6876, y: 0.7116, z: 1}
+  m_LocalPosition: {x: -0.02, y: 3.96, z: 0}
+  m_LocalScale: {x: 0.047401957, y: 0.049056474, z: 0.06893828}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,9 +78,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.509434, g: 0.093716644, b: 0.093716644, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 21300000, guid: 8432465d6835f0b4fa28667d0f43393a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -120,9 +121,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12872124, y: -0.29021505}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 9.621268
 --- !u!50 &7616702513319726855
 Rigidbody2D:
   serializedVersion: 4
@@ -164,6 +165,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7616702513319726855}
   moveSpeed: 2
+--- !u!114 &6444148890742847957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293196996684663753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d2d0832eb3b3445a879dd8f8efc4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultAnimationCycle:
+  - {fileID: 21300000, guid: 8432465d6835f0b4fa28667d0f43393a, type: 3}
+  - {fileID: 21300000, guid: 8d065e912f1eaa744ae90af16a740848, type: 3}
+  - {fileID: 21300000, guid: fe3d6271a9a1b8043a7f2cf6d9859fea, type: 3}
+  - {fileID: 21300000, guid: 8d065e912f1eaa744ae90af16a740848, type: 3}
+  Framerate: 12
+  SpriteRenderer: {fileID: 8381103339584734166}
 --- !u!114 &4301072478594205967
 MonoBehaviour:
   m_ObjectHideFlags: 0
