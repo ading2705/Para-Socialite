@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        AudioController.Instance.PlayTheme("tower");
+      //add Tower defense music start 
     }
     private void Awake()
     {
