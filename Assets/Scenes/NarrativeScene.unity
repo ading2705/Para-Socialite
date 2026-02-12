@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 824513224}
   - component: {fileID: 824513226}
   - component: {fileID: 824513225}
+  - component: {fileID: 824513227}
   m_Layer: 0
   m_Name: Admin
   m_TagString: Untagged
@@ -522,6 +523,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 451312531ab73d04baceddc1a6b31eab, type: 2}
   - {fileID: 11400000, guid: 3157c1413eda96547b40e8857fa48174, type: 2}
   effects: []
+--- !u!114 &824513227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824513222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b72b862cb2aab844a86ac99074c89e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FastForwardSpeed: 0
+  maxSanity: 20
 --- !u!1 &909945013
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +552,7 @@ GameObject:
   - component: {fileID: 909945021}
   - component: {fileID: 909945023}
   - component: {fileID: 909945024}
+  - component: {fileID: 909945025}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -697,6 +713,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &909945025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909945013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f6287dbcb0e0d4a8c0e8b378bf9444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultSprite: {fileID: 21300000, guid: 0e0f95c0fcaa7354fbb1d0617fdbd880, type: 3}
+  sanitySprite: {fileID: 21300000, guid: 5260181bb1384154a9c04e738dc8c236, type: 3}
 --- !u!1 &1065979052
 GameObject:
   m_ObjectHideFlags: 0
