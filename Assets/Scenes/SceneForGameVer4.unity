@@ -764,10 +764,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeSource: {fileID: 446364446}
   effectSource: {fileID: 293428854}
-  towerTheme: {fileID: 8300000, guid: a4feef9b8167b0a4fa7c95a781cf60e4, type: 3}
-  narrativeTheme: {fileID: 0}
-  towerSelect: {fileID: 8300000, guid: 4ecb3ca3587e86b439403a4a817c63f5, type: 3}
-  towerPlace: {fileID: 8300000, guid: c309fe0392f806145ba5f9014326c35f, type: 3}
+  themes: []
+  effects: []
 --- !u!82 &446364446
 AudioSource:
   m_ObjectHideFlags: 0
@@ -889,7 +887,7 @@ Transform:
   m_GameObject: {fileID: 735936028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.25, y: 3.2038708, z: -0.046681315}
+  m_LocalPosition: {x: 5.25, y: 2.55, z: -0.046681315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1323,6 +1321,7 @@ MonoBehaviour:
   _PlacementTile: {fileID: -1071853822287793842, guid: 65bb02378cf32064b84db99fcfc535c9, type: 3}
   _PathTile: {fileID: -5664674980866323763, guid: 5a881727f1e70064aa9a787248ad2a12, type: 3}
   _cam: {fileID: 283968299}
+  _selectedMapIndex: 0
 --- !u!4 &1783838239
 Transform:
   m_ObjectHideFlags: 0
@@ -1531,7 +1530,7 @@ Transform:
   m_GameObject: {fileID: 1939126431}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.809916, y: 3.2038708, z: -0.046681315}
+  m_LocalPosition: {x: -1.809916, y: 2.62, z: -0.046681315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
