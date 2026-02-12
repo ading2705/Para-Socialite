@@ -1131,6 +1131,8 @@ MonoBehaviour:
   timeBetweenWaves: 15
   difficultyScalingFactor: 0.75
   enemiesPerSecondCap: 10
+  countdownBox: {fileID: 405257980}
+  countdownText: {fileID: 2037559757}
   waveOverlay: {fileID: 1316493236}
   waveText: {fileID: 1522593617}
   deactivateSpawner1: {fileID: 293428849}
