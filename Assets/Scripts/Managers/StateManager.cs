@@ -67,6 +67,11 @@ public class StateManager : MonoBehaviour
         return Sanity;
     }
 
+    public void LoseSanity(int amount)
+    {
+        Sanity -= amount;
+    }
+
     public bool SpendSanity(int amount)
     {
         if (amount >= Sanity) return false;

@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DragController : MonoBehaviour
 {
+    [SerializeField] public ConfirmationWindow myConfirmationWindow;
+    public GameObject deactivateSpawner1;
+    public GameObject deactivateSpawner2;
+    public GameObject deactivateSpawner3;
     public Draggable LastDraggable => _lastDragged;
     private bool _isDragActive = false;
     private Vector2 _screenPosition;
     private Vector3 _worldPosition;
     private Draggable _lastDragged;
+    private StateManager SanityValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+         GameObject stateManager = GameObject.FindWithTag("HealthBar");
+         SanityValue = stateManager.GetComponent<StateManager>();
     }
     
     void Awake(){
@@ -32,6 +39,7 @@ public class DragController : MonoBehaviour
             if (Input.GetMouseButtonUp(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended))
             {
             Drop();
+            OpenConfirmationWindow("Are you sure?");
             //play drop SFX
             return;
             }
@@ -89,6 +97,39 @@ public class DragController : MonoBehaviour
     {
         _isDragActive = _lastDragged.IsDragging = isDragging;
         _lastDragged.gameObject.layer = isDragging ? Layer.Dragging : Layer.Default;
+    }
+
+    public void OpenConfirmationWindow(string message)
+    {
+        deactivateSpawner1.SetActive(false);
+        deactivateSpawner2.SetActive(false);
+        deactivateSpawner3.SetActive(false);
+        myConfirmationWindow.gameObject.SetActive(true);
+        myConfirmationWindow.yesButton.onClick.AddListener(YesClicked);
+        myConfirmationWindow.noButton.onClick.AddListener(NoClicked);
+    }
+
+    public void YesClicked()
+    {
+        myConfirmationWindow.gameObject.SetActive(false);
+        Destroy(LastDraggable);
+        deactivateSpawner1.SetActive(true);
+        deactivateSpawner2.SetActive(true);
+        deactivateSpawner3.SetActive(true);
+        SanityValue.SpendSanity(2);
+
+        
+    }
+
+     public void NoClicked()
+    {
+        myConfirmationWindow.gameObject.SetActive(false);
+        deactivateSpawner1.SetActive(true);
+        deactivateSpawner2.SetActive(true);
+        deactivateSpawner3.SetActive(true);
+        Destroy(_lastDragged.gameObject);
+
+        
     }
 
 }

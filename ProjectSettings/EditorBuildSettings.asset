@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NarrativeScene.unity
     guid: 862aed322ce7c8c449479e0cab732b3d
+  - enabled: 1
+    path: Assets/Scenes/CompleteTDSceneWithAllFeatures.unity
+    guid: c86a507e8e2eb284fa30719df0dfb1e5
   m_configObjects: {}
