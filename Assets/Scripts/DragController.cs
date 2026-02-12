@@ -32,6 +32,7 @@ public class DragController : MonoBehaviour
             if (Input.GetMouseButtonUp(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended))
             {
             Drop();
+            //play drop SFX
             return;
             }
         }
