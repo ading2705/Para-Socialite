@@ -20,6 +20,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NarrativeScene.unity
     guid: 862aed322ce7c8c449479e0cab732b3d
+  - enabled: 0
+    path: Assets/Scenes/LoseScene.unity
+    guid: 39ec56bcbc1e83f4b995a9ab993bc3c8
+  - enabled: 0
+    path: Assets/Scenes/WinScene.unity
+    guid: 6a35137650b38bd45bdcc91e7b8677a8
+  - enabled: 1
+    path: Assets/Scenes/Lose.unity
+    guid: 76dd9c1d75faea844bea472baf8a5670
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 588bdf2bf36e7cf4c96c0129c0904bf4
   - enabled: 1
     path: Assets/Scenes/CompleteTDSceneWithAllFeatures.unity
     guid: c86a507e8e2eb284fa30719df0dfb1e5

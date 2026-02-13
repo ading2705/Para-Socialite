@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -52,7 +53,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!isSpawning) return;
+        if (currentWave >= 3)
+        {
+            SceneManager.LoadScene("Win");
+        } 
+        if(!isSpawning) return;
 
         timeSinceLastSpawn += Time.deltaTime;
 

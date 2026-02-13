@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class EnemyMovement : MonoBehaviour
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 SanityValue.LoseSanity(hitCount);
+
+                if (SanityValue.CurrentSanity() <= 0)
+                {
+                    SceneManager.LoadScene("Lose");
+                }
                 return;
             }
             else
