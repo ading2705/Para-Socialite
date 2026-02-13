@@ -7,6 +7,6 @@ public class PlayAgainTDS : MonoBehaviour
 {
     public void PlayAgain()
     {
-        SceneManager.LoadScene("TDS");
+        SceneManager.LoadScene("CompleteTDSceneWithAllFeatures");
     }
 }

@@ -13,7 +13,7 @@ public class TurretBehavior : MonoBehaviour
 
     void OnMouseEnter()
     {
-        
+
         if (_highlight != null)
             _highlight.SetActive(true);
     }
@@ -42,7 +42,7 @@ public class TurretBehavior : MonoBehaviour
 
     private void Update()
     {
-        if(target == null)
+        if (target == null)
         {
             FindTarget();
             return;
@@ -58,7 +58,7 @@ public class TurretBehavior : MonoBehaviour
         {
             timeUntilFire += Time.deltaTime;
 
-            if(timeUntilFire >= 1f / bps)
+            if (timeUntilFire >= 1f / bps)
             {
                 Shoot();
                 timeUntilFire = 0f;
@@ -77,7 +77,7 @@ public class TurretBehavior : MonoBehaviour
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
-        if(hits.Length > 0)
+        if (hits.Length > 0)
         {
             target = hits[0].transform;
         }
@@ -96,13 +96,15 @@ public class TurretBehavior : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        
+
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 
     }
+#endif
 
 
 
