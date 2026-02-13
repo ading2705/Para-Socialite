@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor.Search;
+#endif
 using UnityEngine;
 using UnityEditor;
 
@@ -43,7 +45,7 @@ public class StinkyTowerBehaviour : MonoBehaviour
 
         timeUntilFire += Time.deltaTime;
 
-        if(timeUntilFire >= 1f / aps)
+        if (timeUntilFire >= 1f / aps)
         {
             FreezeEnemies();
             timeUntilFire = 0f;
@@ -54,9 +56,9 @@ public class StinkyTowerBehaviour : MonoBehaviour
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
-        if(hits.Length > 0)
+        if (hits.Length > 0)
         {
-            for(int i=0; i<hits.Length; i++)
+            for (int i = 0; i < hits.Length; i++)
             {
                 RaycastHit2D hit = hits[i];
 
@@ -74,15 +76,14 @@ public class StinkyTowerBehaviour : MonoBehaviour
 
         em.ResetSpeed();
     }
-    
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        
+
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 
     }
-
-    
+#endif
 
 }
