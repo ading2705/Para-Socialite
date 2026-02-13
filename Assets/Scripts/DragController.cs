@@ -19,13 +19,14 @@ public class DragController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         GameObject stateManager = GameObject.FindWithTag("HealthBar");
-         SanityValue = stateManager.GetComponent<StateManager>();
+        GameObject stateManager = GameObject.FindWithTag("HealthBar");
+        SanityValue = stateManager.GetComponent<StateManager>();
     }
-    
-    void Awake(){
-      DragController[] controllers = FindObjectsOfType<DragController>();
-      if(controllers.Length > 1)
+
+    void Awake()
+    {
+        DragController[] controllers = FindObjectsOfType<DragController>();
+        if (controllers.Length > 1)
         {
             Destroy(gameObject);
         }
@@ -34,29 +35,31 @@ public class DragController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-             if(_isDragActive)
+        if (_isDragActive)
         {
             if (Input.GetMouseButtonUp(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended))
             {
-            Drop();
-            OpenConfirmationWindow("Are you sure?");
-            //play drop SFX
-            return;
+                Drop();
+                OpenConfirmationWindow("Are you sure?");
+                //play drop SFX
+                return;
             }
         }
-            if (Input.GetMouseButton(0))
-            {
-                Vector3 mousePos = Input.mousePosition;
-                _screenPosition = new Vector2(mousePos.x, mousePos.y);
-            }
-            else if(Input.touchCount > 0){
-              _screenPosition = Input.GetTouch(0).position;
-            }
-            else{
-             return;
-            } 
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 mousePos = Input.mousePosition;
+            _screenPosition = new Vector2(mousePos.x, mousePos.y);
+        }
+        else if (Input.touchCount > 0)
+        {
+            _screenPosition = Input.GetTouch(0).position;
+        }
+        else
+        {
+            return;
+        }
 
-            _worldPosition = Camera.main.ScreenToWorldPoint(_screenPosition);
+        _worldPosition = Camera.main.ScreenToWorldPoint(_screenPosition);
 
         if (_isDragActive)
         {
@@ -64,36 +67,39 @@ public class DragController : MonoBehaviour
         }
         else
         {
-          RaycastHit2D hit = Physics2D.Raycast(_worldPosition, Vector2.zero);
-          if(hit.collider != null)
+            RaycastHit2D hit = Physics2D.Raycast(_worldPosition, Vector2.zero);
+            if (hit.collider != null)
             {
                 Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
-                if(draggable != null)
+                if (draggable != null)
                 {
                     _lastDragged = draggable;
                     InitDrag();
                 }
-            }  
+            }
         }
     }
-    void InitDrag(){
+    void InitDrag()
+    {
 
-     _lastDragged.LastPosition = _lastDragged.transform.position;   
-     UpdateDragStatus(true);
-
-    }
-
-    void Drag(){
-     _lastDragged.transform.position = new Vector2(_worldPosition.x, _worldPosition.y);
+        _lastDragged.LastPosition = _lastDragged.transform.position;
+        UpdateDragStatus(true);
 
     }
 
-    void Drop(){
-      UpdateDragStatus(false);
+    void Drag()
+    {
+        _lastDragged.transform.position = new Vector2(_worldPosition.x, _worldPosition.y);
 
     }
 
- void UpdateDragStatus(bool isDragging)
+    void Drop()
+    {
+        UpdateDragStatus(false);
+
+    }
+
+    void UpdateDragStatus(bool isDragging)
     {
         _isDragActive = _lastDragged.IsDragging = isDragging;
         _lastDragged.gameObject.layer = isDragging ? Layer.Dragging : Layer.Default;
@@ -117,11 +123,11 @@ public class DragController : MonoBehaviour
         deactivateSpawner2.SetActive(true);
         deactivateSpawner3.SetActive(true);
         SanityValue.SpendSanity(2);
+        AudioController.Instance.PlayEffect("1");
 
-        
     }
 
-     public void NoClicked()
+    public void NoClicked()
     {
         myConfirmationWindow.gameObject.SetActive(false);
         deactivateSpawner1.SetActive(true);
@@ -129,7 +135,7 @@ public class DragController : MonoBehaviour
         deactivateSpawner3.SetActive(true);
         Destroy(_lastDragged.gameObject);
 
-        
+
     }
 
 }

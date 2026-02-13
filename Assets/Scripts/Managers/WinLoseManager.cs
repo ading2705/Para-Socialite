@@ -3,7 +3,7 @@ using UnityEngine;
 public class WinLoseManager : MonoBehaviour
 {
     private static WinLoseManager _instance; //singleton
-    public static WinLoseManager Instance {get{return _instance;}}
+    public static WinLoseManager Instance { get { return _instance; } }
 
     [SerializeField] private string winScene; // win
     [SerializeField] private string loseScene; // loss
