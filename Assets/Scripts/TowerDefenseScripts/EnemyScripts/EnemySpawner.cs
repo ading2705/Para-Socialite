@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -46,6 +47,10 @@ public class EnemySpawner : MonoBehaviour
     
     private void Update()
     {
+        if (currentWave >= 3)
+        {
+            SceneManager.LoadScene("Win");
+        } 
         if(!isSpawning) return;
 
         timeSinceLastSpawn += Time.deltaTime;

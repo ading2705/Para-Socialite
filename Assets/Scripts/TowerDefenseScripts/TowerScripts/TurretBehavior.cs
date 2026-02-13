@@ -96,13 +96,15 @@ public class TurretBehavior : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        
+
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 
     }
+#endif
 
 
 
