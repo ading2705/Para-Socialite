@@ -173,14 +173,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.30980393}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 14da876f4ac91734399ec5a6d6527b23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 824513226}
   - component: {fileID: 824513225}
   - component: {fileID: 824513227}
+  - component: {fileID: 824513228}
   m_Layer: 0
   m_Name: Admin
   m_TagString: Untagged
@@ -537,6 +538,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FastForwardSpeed: 0
   maxSanity: 20
+--- !u!114 &824513228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824513222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f0ffe48636b64408f0ae3796dc8acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScenes:
+  - SceneAfterNarrativeTesting
 --- !u!1 &909945013
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +567,6 @@ GameObject:
   - component: {fileID: 909945021}
   - component: {fileID: 909945023}
   - component: {fileID: 909945024}
-  - component: {fileID: 909945025}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -713,20 +727,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &909945025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909945013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f6287dbcb0e0d4a8c0e8b378bf9444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSprite: {fileID: 21300000, guid: 0e0f95c0fcaa7354fbb1d0617fdbd880, type: 3}
-  sanitySprite: {fileID: 21300000, guid: 5260181bb1384154a9c04e738dc8c236, type: 3}
 --- !u!1 &1065979052
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1275447395
 SpriteRenderer:
   m_ObjectHideFlags: 0
