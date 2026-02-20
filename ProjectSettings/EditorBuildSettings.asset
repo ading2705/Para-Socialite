@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CompleteTDSceneWithAllFeatures.unity
     guid: c86a507e8e2eb284fa30719df0dfb1e5
+  - enabled: 1
+    path: Assets/Scenes/FOR ETHA/TemplateNarrativeScene(FOR ETHA!!).unity
+    guid: 0dfd08cadd2efff40952dc83218d8321
+  - enabled: 1
+    path: Assets/Scenes/FOR ETHA/SceneAfterNarrativeTesting.unity
+    guid: ff787b90735c81149a828f0f70dd31f1
   m_configObjects: {}

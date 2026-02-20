@@ -3,7 +3,7 @@ using UnityEngine;
 public class WinLoseManager : MonoBehaviour
 {
     private static WinLoseManager _instance; //singleton
-    public static WinLoseManager Instance {get{return _instance;}}
+    public static WinLoseManager Instance { get { return _instance; } }
 
     [SerializeField] private string winScene; // win
     [SerializeField] private string loseScene; // loss
@@ -17,13 +17,13 @@ public class WinLoseManager : MonoBehaviour
     // WinLoseManager.Instance.Win(); <-------------------------- we gotta add this to somewhere, like if enemy = 0 
     // or smth cuz idk where that is
     {
-        TransitionManager.Instance.nextScene = winScene;
+        TransitionManager.Instance.nextScenes[0] = winScene;
         TransitionManager.Instance.GoToNextScene();
     }
 
     public void Lose()
     {
-        TransitionManager.Instance.nextScene = loseScene;
+        TransitionManager.Instance.nextScenes[0] = loseScene;
         TransitionManager.Instance.GoToNextScene();
     }
 }
