@@ -520,10 +520,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeSource: {fileID: 824513225}
   effectSource: {fileID: 824513225}
+  dialogueBlipSource: {fileID: 824513225}
   themes:
   - {fileID: 11400000, guid: 451312531ab73d04baceddc1a6b31eab, type: 2}
   - {fileID: 11400000, guid: 3157c1413eda96547b40e8857fa48174, type: 2}
   effects: []
+  blips: []
 --- !u!114 &824513227
 MonoBehaviour:
   m_ObjectHideFlags: 0
