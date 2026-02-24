@@ -8,9 +8,11 @@ public class AudioController : MonoBehaviour
     public static AudioController Instance { get { return _instance; } }
     public AudioSource themeSource;
     public AudioSource effectSource;
+    public AudioSource dialogueBlipSource;
 
     public AudioObject[] themes;
     public AudioObject[] effects;
+    public AudioObject[] blips;
 
     // Start is called before the first frame update
     void Awake()
