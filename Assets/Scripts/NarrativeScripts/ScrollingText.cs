@@ -17,15 +17,17 @@ public class ScrollingText : MonoBehaviour
         textLabel.text = string.Empty;
         float t = 0;
         int charIndex = 0;
-
-        while (charIndex < line.Length)
+        bool hasColour = line.Contains("<color=");
+        int startIndex = hasColour ? 15 : 0;
+        while (charIndex < line.Length - startIndex)
         {
             t += Time.deltaTime * typeSpeed;
             charIndex = Mathf.FloorToInt(t);
-            charIndex = Mathf.Clamp(charIndex, 0, line.Length);
-            textLabel.text = line.Substring(0, charIndex);
+            charIndex = Mathf.Clamp(charIndex, 0, line.Length - startIndex);
+            textLabel.text = line.Substring(0, charIndex + startIndex);
             yield return null;
         }
+        // Debug.Log(textLabel.text);
 
         textLabel.text = line;
     }
