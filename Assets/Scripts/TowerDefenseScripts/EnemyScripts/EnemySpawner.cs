@@ -33,9 +33,13 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesLeftToSpawn;
     private float eps; //enemies per second
     private bool isSpawning = false;
-    public GameObject deactivateSpawner1;
-    public GameObject deactivateSpawner2;
-    public GameObject deactivateSpawner3;
+
+    [Header("Towers menu")]
+    public GameObject menu;
+    public float deactivatedX;
+    public float activatedX;
+    public float aniTime;
+
 
     private void Awake()
     {
@@ -56,18 +60,16 @@ public class EnemySpawner : MonoBehaviour
         if (currentWave >= 3)
         {
             SceneManager.LoadScene("Win");
-        } 
-        if(!isSpawning) return;
+        }
+        if (!isSpawning) return;
 
         timeSinceLastSpawn += Time.deltaTime;
+        if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0) { }
 
         if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
         {
-            deactivateSpawner1.SetActive(false);
-            deactivateSpawner2.SetActive(false);
-            deactivateSpawner3.SetActive(false);
+            StartCoroutine(DeactivateMenu());
             SpawnEnemy();
-            Debug.Log("Spawn Enemy");
             enemiesLeftToSpawn--;
             enemiesAlive++;
             timeSinceLastSpawn = 0f;
@@ -76,9 +78,8 @@ public class EnemySpawner : MonoBehaviour
         if (enemiesAlive == 0 && enemiesLeftToSpawn == 0)
         {
             EndWave();
-            deactivateSpawner1.SetActive(true);
-            deactivateSpawner2.SetActive(true);
-            deactivateSpawner3.SetActive(true);
+            menu.SetActive(true);
+            // StartCoroutine(ActivateMenu());
         }
 
     }
@@ -143,6 +144,31 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         countdownBox.SetActive(false);
+    }
+
+    IEnumerator DeactivateMenu()
+    {
+        while (menu.transform.position.x < deactivatedX)
+        {
+            menu.transform.position = new Vector3(activatedX + (deactivatedX - activatedX) * 0.1f, menu.transform.position.y, menu.transform.position.z);
+        }
+        menu.transform.position = new Vector3(deactivatedX, menu.transform.position.y, menu.transform.position.z);
+        menu.SetActive(false);
+        yield return null;
+    }
+
+    IEnumerator ActivateMenu()
+    {
+        menu.transform.position = new Vector3(deactivatedX, menu.transform.position.y, menu.transform.position.z);
+        float t = 0;
+        while (t < aniTime)
+        {
+            t += Time.deltaTime;
+            menu.transform.position = new Vector3(menu.transform.position.x + (activatedX - deactivatedX) / (aniTime / 24.0f), menu.transform.position.y, menu.transform.position.z);
+        }
+        menu.transform.position = new Vector3(activatedX, menu.transform.position.y, menu.transform.position.z);
+        menu.SetActive(false);
+        yield return null;
     }
 
 }
