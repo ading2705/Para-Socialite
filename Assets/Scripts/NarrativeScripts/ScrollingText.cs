@@ -14,6 +14,7 @@ public class ScrollingText : MonoBehaviour
 
     public IEnumerator TypeText(string line, TMP_Text textLabel)
     {
+        AudioController.Instance.StartBlip();
         textLabel.text = string.Empty;
         float t = 0;
         int charIndex = 0;
@@ -27,8 +28,8 @@ public class ScrollingText : MonoBehaviour
             textLabel.text = line.Substring(0, charIndex + startIndex);
             yield return null;
         }
-        // Debug.Log(textLabel.text);
 
         textLabel.text = line;
+        AudioController.Instance.StopBlip();
     }
 }
