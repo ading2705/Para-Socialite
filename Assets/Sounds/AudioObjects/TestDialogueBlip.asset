@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 793532b6c172be64e875532cc33036c6, type: 3}
-  m_Name: CatDialogue
+  m_Script: {fileID: 11500000, guid: 0ddc32408d113224faf13fdf79e75bcf, type: 3}
+  m_Name: TestDialogueBlip
   m_EditorClassIdentifier: 
-  dialogue:
-  - '*meow*'
-  - '*purr*'
-  - I'm not really a cat.
-  responses: []
+  name: TestBlip
+  audio: {fileID: 8300000, guid: ec7ac94aeee4d5a41bbca05e7d21e13b, type: 3}
