@@ -40,7 +40,6 @@ public class EnemySpawner : MonoBehaviour
     public float activatedX;
     public float aniTime;
 
-
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
@@ -78,8 +77,7 @@ public class EnemySpawner : MonoBehaviour
         if (enemiesAlive == 0 && enemiesLeftToSpawn == 0)
         {
             EndWave();
-            menu.SetActive(true);
-            // StartCoroutine(ActivateMenu());
+            StartCoroutine(ActivateMenu());
         }
 
     }
@@ -112,7 +110,6 @@ public class EnemySpawner : MonoBehaviour
         GameObject prefabToSpawn = enemyPrefabs[index];
         Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
     }
-
 
     private int EnemiesPerWave()
     {
@@ -148,9 +145,12 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator DeactivateMenu()
     {
-        while (menu.transform.position.x < deactivatedX)
+        float t = 0f;
+        while (menu.transform.position.x - deactivatedX < 0.1f && t < 1)
         {
-            menu.transform.position = new Vector3(activatedX + (deactivatedX - activatedX) * 0.1f, menu.transform.position.y, menu.transform.position.z);
+            t += Time.deltaTime;
+            menu.transform.position = Vector3.Lerp(menu.transform.position, new Vector3(deactivatedX, menu.transform.position.y, menu.transform.position.z), Time.deltaTime * 5.0f);
+            yield return null;
         }
         menu.transform.position = new Vector3(deactivatedX, menu.transform.position.y, menu.transform.position.z);
         menu.SetActive(false);
@@ -159,15 +159,15 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator ActivateMenu()
     {
-        menu.transform.position = new Vector3(deactivatedX, menu.transform.position.y, menu.transform.position.z);
-        float t = 0;
-        while (t < aniTime)
+        float t = 0f;
+        menu.SetActive(true);
+        while (menu.transform.position.x > activatedX && t < 1)
         {
             t += Time.deltaTime;
-            menu.transform.position = new Vector3(menu.transform.position.x + (activatedX - deactivatedX) / (aniTime / 24.0f), menu.transform.position.y, menu.transform.position.z);
+            menu.transform.position = Vector3.Lerp(menu.transform.position, new Vector3(activatedX, menu.transform.position.y, menu.transform.position.z), Time.deltaTime * 5.0f);
+            yield return null;
         }
         menu.transform.position = new Vector3(activatedX, menu.transform.position.y, menu.transform.position.z);
-        menu.SetActive(false);
         yield return null;
     }
 

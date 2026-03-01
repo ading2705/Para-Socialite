@@ -1132,7 +1132,7 @@ MonoBehaviour:
   - {fileID: 8293196996684663753, guid: aff70ff927ed3a44880eac04f25be23a, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 0.5
-  timeBetweenWaves: 2
+  timeBetweenWaves: 15
   difficultyScalingFactor: 0.75
   enemiesPerSecondCap: 10
   countdownBox: {fileID: 405257980}
@@ -1190,8 +1190,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeSource: {fileID: 446364446}
   effectSource: {fileID: 293428854}
+  dialogueBlipSource: {fileID: 0}
   themes: []
   effects: []
+  blips: []
 --- !u!82 &446364446
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1787,7 +1789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FastForwardSpeed: 0
-  maxSanity: 0
+  maxSanity: 20
 --- !u!4 &1069621988
 Transform:
   m_ObjectHideFlags: 0
