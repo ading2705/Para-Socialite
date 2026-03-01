@@ -14,12 +14,12 @@ TagManager:
   - 
   - Water
   - UI
+  - PathTile
+  - PlacementTile
   - Dragging
   - Enemy
   - Bullet
-  - 
-  - 
-  - 
+  - Draggable
   - 
   - 
   - 
@@ -41,9 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: PathTile
+    uniqueID: 421691243
+    locked: 0
+  - name: PlacementTile
+    uniqueID: 2113109563
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: UI
-    uniqueID: 2113109563
     locked: 0

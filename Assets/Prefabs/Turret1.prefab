@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1112962244798935330}
   - component: {fileID: 4834860766844797371}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692578184465960300}
   - component: {fileID: 1903051460022018598}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RangeIndicate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 9217843900729027364}
   - component: {fileID: 4424789289636315202}
   - component: {fileID: 5451919032177849443}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4610770820756996181}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6035467907097560527}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RotatePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 447174995812494910}
   - component: {fileID: 3480965886060983312}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Isometric Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}

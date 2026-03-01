@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1112962244798935330}
   - component: {fileID: 4834860766844797371}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8914985404242843391}
   - component: {fileID: 816177601633387436}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RangeIndicate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 4424789289636315202}
   - component: {fileID: 5451919032177849443}
   - component: {fileID: 8156745776006152415}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

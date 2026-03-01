@@ -101,16 +101,20 @@ PrefabInstance:
       value: Drop Valid
       objectReference: {fileID: 0}
     - target: {fileID: 7937238429420905111, guid: 2bbb88c6505ae8b4da926d512886e8c9, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7937238429420905111, guid: 2bbb88c6505ae8b4da926d512886e8c9, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7937238429420905111, guid: 2bbb88c6505ae8b4da926d512886e8c9, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7937238429420905111, guid: 2bbb88c6505ae8b4da926d512886e8c9, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8290226005116373067, guid: 2bbb88c6505ae8b4da926d512886e8c9, type: 3}
       propertyPath: m_LocalPosition.x

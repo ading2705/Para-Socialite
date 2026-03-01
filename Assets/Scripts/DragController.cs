@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DragController : MonoBehaviour
 {
+    [SerializeField] private LayerMask _draggableLayer; // added this line to try and fix turret dragging
     [SerializeField] public ConfirmationWindow myConfirmationWindow;
     public GameObject deactivateSpawner1;
     public GameObject deactivateSpawner2;
@@ -64,12 +65,16 @@ public class DragController : MonoBehaviour
         }
         else
         {
-          RaycastHit2D hit = Physics2D.Raycast(_worldPosition, Vector2.zero);
-          if(hit.collider != null)
+          Collider2D hit = Physics2D.OverlapPoint(_worldPosition); // aaaaaaaaaaaa im losing it
+          if (hit != null)
             {
-                Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
+                //Debug.Log("Hit: " + hit.GetComponent<Collider2D>().name); // debugging not dragging........ 
+                // this fuckin DEBUG LINE was the source of some errors fml, tryin a diff one now
+                Draggable draggable = hit.GetComponentInParent<Draggable>(); // if the in parent thing fixes this all i stg
+                //Debug.Log("Draggable detected: " + draggable.name); // WHY IS DRAGGABLE NULL????????????????
                 if(draggable != null)
                 {
+                    Debug.Log("Draggable detected: " + draggable.name); // sobbing rn
                     _lastDragged = draggable;
                     InitDrag();
                 }
