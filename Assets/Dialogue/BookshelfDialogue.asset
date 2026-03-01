@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 793532b6c172be64e875532cc33036c6, type: 3}
-  m_Name: CatDialogue
+  m_Name: BookshelfDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - '*meow*'
-  - You'd never swarm me for an autograph kitty.
-  - '*Cotton scruffs their fur.*'
-  - That's why I love you. You're the only one that really lets me unwind.
+  - I haven't had much time to read lately...
+  - 
   responses: []

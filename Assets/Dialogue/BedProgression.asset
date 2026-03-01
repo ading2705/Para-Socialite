@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 793532b6c172be64e875532cc33036c6, type: 3}
-  m_Name: WinDialogue
+  m_Name: BedProgression
   m_EditorClassIdentifier: 
   dialogue:
-  - Yay you won!
-  - You get a turtle.
-  responses: []
+  - I'm exhausted. Time to hit the hay.
+  - I guess I'll...
+  responses:
+  - responseText: Go to sleep.
+    dialogueObject: {fileID: 11400000, guid: e1fc220f758d34549be01de792524014, type: 2}
+  - responseText: Not yet.
+    dialogueObject: {fileID: 11400000, guid: 81fc5206c62256a47aa59bf1a4a72108, type: 2}
