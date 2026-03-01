@@ -84,7 +84,7 @@ public class TurretBehavior : MonoBehaviour
 
     private void Shoot()
     {
-        
+
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
@@ -133,49 +133,19 @@ public class TurretBehavior : MonoBehaviour
         CloseUpgradeUI();
     }
 
-    private int CalculateCost(){
-        return Mathf.RoundToInt(baseUpgradeCost*Mathf.Pow(level, 0.8f));
-    }
-
-    private float CalculateBps(){
-        return bpsBase*Mathf.Pow(level, 0.6f);
-    }
-
-    private float CalculateRange(){
-       return targetingRangeBase*Mathf.Pow(level, 0.4f);
-    }
-
-
-    public void OpenUpgradeUI()
+    private int CalculateCost()
     {
-        upgradeUI.SetActive(true);
+        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 0.8f));
     }
 
-    public void CloseUpgradeUI()
+    private float CalculateBps()
     {
-        upgradeUI.SetActive(false);
+        return bpsBase * Mathf.Pow(level, 0.6f);
     }
 
-    public void Upgrade()
+    private float CalculateRange()
     {
-        SanityValue.SpendSanity(CalculateCost());
-        level++;
-        bps = CalculateBps();
-        //targetingRange = CalculateRange(); -- For increasing range of a turret. Only increase firing rate at first)
-
-        CloseUpgradeUI();
-    }
-
-    private int CalculateCost(){
-        return Mathf.RoundToInt(baseUpgradeCost*Mathf.Pow(level, 0.8f));
-    }
-
-    private float CalculateBps(){
-        return bpsBase*Mathf.Pow(level, 0.6f);
-    }
-
-    private float CalculateRange(){
-       return targetingRangeBase*Mathf.Pow(level, 0.4f);
+        return targetingRangeBase * Mathf.Pow(level, 0.4f);
     }
 
 
@@ -191,7 +161,7 @@ public class TurretBehavior : MonoBehaviour
 
     void OnMouseEnter()
     {
-        
+
         if (_highlight != null)
             _highlight.SetActive(true);
     }
@@ -200,13 +170,14 @@ public class TurretBehavior : MonoBehaviour
     {
         if (_highlight != null)
             _highlight.SetActive(false);
-            CloseUpgradeUI();
+        CloseUpgradeUI();
     }
 
-    
+
     void OnMouseDown()
     {
-        if(this.CompareTag("IsUpgradable")){
+        if (this.CompareTag("IsUpgradable"))
+        {
             this.OpenUpgradeUI();
         }
     }
@@ -214,7 +185,7 @@ public class TurretBehavior : MonoBehaviour
     IEnumerator startShoot()
     {
         spriteRenderer.sprite = shootSprite;
-        yield return new WaitForSeconds (bps/2);
+        yield return new WaitForSeconds(bps / 2);
         spriteRenderer.sprite = stillSprite;
     }
 
