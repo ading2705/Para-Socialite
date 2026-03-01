@@ -63,11 +63,9 @@ public class EnemySpawner : MonoBehaviour
         if (!isSpawning) return;
 
         timeSinceLastSpawn += Time.deltaTime;
-        if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0) { }
 
         if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
         {
-            StartCoroutine(DeactivateMenu());
             SpawnEnemy();
             enemiesLeftToSpawn--;
             enemiesAlive++;
@@ -94,6 +92,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
         eps = EnemiesPerSecond();
+        StartCoroutine(DeactivateMenu());
         StartCoroutine(DisplayInfo("Incoming Enemies: " + enemiesLeftToSpawn));
     }
     private void EndWave()
@@ -145,6 +144,11 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator DeactivateMenu()
     {
+        foreach (Transform child in menu.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.1f);
         float t = 0f;
         while (menu.transform.position.x - deactivatedX < 0.1f && t < 1)
         {
@@ -168,6 +172,10 @@ public class EnemySpawner : MonoBehaviour
             yield return null;
         }
         menu.transform.position = new Vector3(activatedX, menu.transform.position.y, menu.transform.position.z);
+        foreach (Transform child in menu.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
         yield return null;
     }
 
