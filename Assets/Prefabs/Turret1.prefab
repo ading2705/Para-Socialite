@@ -292,8 +292,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4653467085744237703}
+  m_Children: []
   m_Father: {fileID: 4817829896977614474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -626,6 +625,7 @@ Transform:
   - {fileID: 6035467907097560527}
   - {fileID: 692578184465960300}
   - {fileID: 7423672439828130309}
+  - {fileID: 1760604415499719757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4615947696603620919
@@ -708,6 +708,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _highlight: {fileID: 1450388326241778025}
   healthCost: 2
+  spriteRenderer: {fileID: 4615947696603620919}
+  stillSprite: {fileID: 21300000, guid: 97e0f192be3fdef4b8b6710e09bc5156, type: 3}
+  shootSprite: {fileID: 21300000, guid: c483ec2a6707a8a4aa60e3b2010b76ec, type: 3}
   turretRotationPoint: {fileID: 6035467907097560527}
   enemyMask:
     serializedVersion: 2
@@ -719,6 +722,8 @@ MonoBehaviour:
   targetingRange: 3
   rotationSpeed: 200
   bps: 1
+  baseCost: 3
+  baseUpgradeCost: 2
 --- !u!58 &4424789289636315202
 CircleCollider2D:
   m_ObjectHideFlags: 0

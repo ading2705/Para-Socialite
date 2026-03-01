@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using System.Runtime.Serialization;
 
 public class TurretBehavior : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class TurretBehavior : MonoBehaviour
     [SerializeField] private GameObject _highlight;
     // HP cost consumed when placement is confirmed.
     [SerializeField] private int healthCost = 2;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite stillSprite;
+    [SerializeField] private Sprite shootSprite;
+
 
     //start of turret behaviour for gameplay
     [Header("References")]
@@ -20,6 +25,7 @@ public class TurretBehavior : MonoBehaviour
     [SerializeField] private GameObject upgradeUI;
     [SerializeField] private Button upgradeButton;
     private StateManager SanityValue;
+
 
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 5f;
@@ -41,8 +47,9 @@ public class TurretBehavior : MonoBehaviour
     {
         bpsBase = bps;
         targetingRangeBase = targetingRange;
-         GameObject stateManager = GameObject.FindWithTag("HealthBar");
-         SanityValue = stateManager.GetComponent<StateManager>();
+        GameObject stateManager = GameObject.FindWithTag("HealthBar");
+        SanityValue = stateManager.GetComponent<StateManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         upgradeButton.onClick.AddListener(Upgrade);
     }
@@ -67,14 +74,17 @@ public class TurretBehavior : MonoBehaviour
 
             if(timeUntilFire >= 1f / bps)
             {
+                StartCoroutine(startShoot());
                 Shoot();
                 timeUntilFire = 0f;
+                StopCoroutine(startShoot());
             }
         }
     }
 
     private void Shoot()
     {
+        
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
@@ -118,7 +128,7 @@ public class TurretBehavior : MonoBehaviour
         SanityValue.SpendSanity(CalculateCost());
         level++;
         bps = CalculateBps();
-        targetingRange = CalculateRange();
+        //targetingRange = CalculateRange(); -- For increasing range of a turret. Only increase firing rate at first)
 
         CloseUpgradeUI();
     }
@@ -166,6 +176,12 @@ public class TurretBehavior : MonoBehaviour
         }
     }
 
+    IEnumerator startShoot()
+    {
+        spriteRenderer.sprite = shootSprite;
+        yield return new WaitForSeconds (bps/2);
+        spriteRenderer.sprite = stillSprite;
+    }
 
 
 }
