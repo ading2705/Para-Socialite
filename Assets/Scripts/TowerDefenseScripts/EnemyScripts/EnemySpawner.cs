@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -32,9 +33,12 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesLeftToSpawn;
     private float eps; //enemies per second
     private bool isSpawning = false;
-    public GameObject deactivateSpawner1;
-    public GameObject deactivateSpawner2;
-    public GameObject deactivateSpawner3;
+
+    [Header("Towers menu")]
+    public GameObject menu;
+    public float deactivatedX;
+    public float activatedX;
+    public float aniTime;
 
     private void Awake()
     {
@@ -52,17 +56,17 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        if (currentWave >= 3)
+        {
+            SceneManager.LoadScene("Win");
+        }
         if (!isSpawning) return;
 
         timeSinceLastSpawn += Time.deltaTime;
 
         if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
         {
-            deactivateSpawner1.SetActive(false);
-            deactivateSpawner2.SetActive(false);
-            deactivateSpawner3.SetActive(false);
             SpawnEnemy();
-            Debug.Log("Spawn Enemy");
             enemiesLeftToSpawn--;
             enemiesAlive++;
             timeSinceLastSpawn = 0f;
@@ -71,9 +75,7 @@ public class EnemySpawner : MonoBehaviour
         if (enemiesAlive == 0 && enemiesLeftToSpawn == 0)
         {
             EndWave();
-            deactivateSpawner1.SetActive(true);
-            deactivateSpawner2.SetActive(true);
-            deactivateSpawner3.SetActive(true);
+            StartCoroutine(ActivateMenu());
         }
 
     }
@@ -90,6 +92,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
         eps = EnemiesPerSecond();
+        StartCoroutine(DeactivateMenu());
         StartCoroutine(DisplayInfo("Incoming Enemies: " + enemiesLeftToSpawn));
     }
     private void EndWave()
@@ -106,7 +109,6 @@ public class EnemySpawner : MonoBehaviour
         GameObject prefabToSpawn = enemyPrefabs[index];
         Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
     }
-
 
     private int EnemiesPerWave()
     {
@@ -138,6 +140,43 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         countdownBox.SetActive(false);
+    }
+
+    IEnumerator DeactivateMenu()
+    {
+        foreach (Transform child in menu.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.1f);
+        float t = 0f;
+        while (menu.transform.position.x - deactivatedX < 0.1f && t < 1)
+        {
+            t += Time.deltaTime;
+            menu.transform.position = Vector3.Lerp(menu.transform.position, new Vector3(deactivatedX, menu.transform.position.y, menu.transform.position.z), Time.deltaTime * 5.0f);
+            yield return null;
+        }
+        menu.transform.position = new Vector3(deactivatedX, menu.transform.position.y, menu.transform.position.z);
+        menu.SetActive(false);
+        yield return null;
+    }
+
+    IEnumerator ActivateMenu()
+    {
+        float t = 0f;
+        menu.SetActive(true);
+        while (menu.transform.position.x > activatedX && t < 1)
+        {
+            t += Time.deltaTime;
+            menu.transform.position = Vector3.Lerp(menu.transform.position, new Vector3(activatedX, menu.transform.position.y, menu.transform.position.z), Time.deltaTime * 5.0f);
+            yield return null;
+        }
+        menu.transform.position = new Vector3(activatedX, menu.transform.position.y, menu.transform.position.z);
+        foreach (Transform child in menu.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        yield return null;
     }
 
 }

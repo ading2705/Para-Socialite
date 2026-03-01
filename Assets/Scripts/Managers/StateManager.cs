@@ -30,7 +30,7 @@ public class StateManager : MonoBehaviour
     void Start()
     {
         _instance = this;
-        Sanity = maxSanity;
+        Sanity = PlayerPrefs.GetInt("Sanity");
         playing = false;
         win = false;
         isFastForwarding = false;
@@ -98,5 +98,10 @@ public class StateManager : MonoBehaviour
     public float FastForwarding()
     {
         return isFastForwarding ? FastForwardSpeed : 1.0f;
+    }
+
+    public void SaveSanity()
+    {
+        PlayerPrefs.SetInt("Sanity", Sanity);
     }
 }

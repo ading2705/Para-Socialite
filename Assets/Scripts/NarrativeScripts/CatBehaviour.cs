@@ -5,7 +5,8 @@ using UnityEngine;
 public class CatBehaviour : MonoBehaviour
 {
     [SerializeField] GameObject hand;
-    Vector3 handStart;
+    private Vector3 handStart;
+    private bool firstPet = false;
     private void Start()
     {
         hand.SetActive(false);
@@ -20,6 +21,7 @@ public class CatBehaviour : MonoBehaviour
     private IEnumerator Pet()
     {
         if (hand.activeSelf) yield break;
+        if (!firstPet) StateManager.Instance.HealSanity(5); // Change value later if needed
         hand.SetActive(true);
         for (int i = 0; i < 24; i++)
         {

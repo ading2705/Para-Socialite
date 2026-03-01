@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpriteScriptManager : MonoBehaviour
 {
+    // for sprites that need to change based on sanity level
     public Sprite defaultSprite;
     public Sprite sanitySprite;
     private static SpriteRenderer renderer;

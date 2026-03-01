@@ -11,6 +11,7 @@ public class ResponseHandler : MonoBehaviour
     [SerializeField] private RectTransform responseContainer;
     [SerializeField] private RectTransform responseBackground;
     List<GameObject> buttons = new List<GameObject>();
+    private string[] sceneChangeResponses = new string[2];
 
     private DialogueUI dialogueUI;
 
@@ -19,8 +20,12 @@ public class ResponseHandler : MonoBehaviour
         dialogueUI = GetComponent<DialogueUI>();
     }
 
+    // Builds the response button box
     public void ShowResponses(Response[] responses)
     {
+        // note that there will only ever be two responses
+        sceneChangeResponses[0] = responses[0].ResponseText;
+        sceneChangeResponses[1] = responses[1].ResponseText;
         float responseBoxHeight = 0;
         foreach (Response response in responses)
         {
@@ -38,14 +43,33 @@ public class ResponseHandler : MonoBehaviour
     private void OnPickedResponse(Response response)
     {
         responseBox.gameObject.SetActive(false);
-        // For tech demo - showing "win" or "lose"
-        if(response.ResponseText == "Lose"){
-            AudioController.Instance.PlayTheme(1);
-        }
         foreach (GameObject button in buttons)
         {
             Destroy(button);
         }
-        dialogueUI.ShowDialogue(response.DialogueObject);
+
+        if (response.ResponseText == sceneChangeResponses[0])
+        {
+            StartCoroutine(DialogueToTransition(response.DialogueObject));
+        }
+        else
+        {
+            dialogueUI.ShowDialogue(response.DialogueObject);
+        }
+    }
+
+
+    // Force player to wait until response dialogue is finished to transition to new scene
+    private IEnumerator DialogueToTransition(DialogueObject dialogue)
+    {
+        dialogueUI.ShowDialogue(dialogue);
+        for (int i = 0; i < dialogue.Dialogue.Length + 1; i++)
+        {
+            yield return new WaitUntil(() => Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space));
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space));
+            i++;
+        }
+        TransitionManager.Instance.GoToNextScene();
+        yield return null;
     }
 }

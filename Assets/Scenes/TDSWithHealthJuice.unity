@@ -2251,7 +2251,6 @@ GameObject:
   - component: {fileID: 1191331710}
   - component: {fileID: 1191331709}
   - component: {fileID: 1191331708}
-  - component: {fileID: 1191331707}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2278,18 +2277,6 @@ RectTransform:
   m_AnchoredPosition: {x: 60, y: 0}
   m_SizeDelta: {x: 300, y: 40}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1191331707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191331705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3e6898234fc5f548a9fdffdaa9c6b17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1191331708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2304,6 +2291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxWidth: 300
   Height: 40
+  fullColor: {r: 1, g: 0, b: 0, a: 0}
+  emptyColor: {r: 0, g: 0.48393774, b: 1, a: 0}
 --- !u!114 &1191331709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2683,8 +2672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b72b862cb2aab844a86ac99074c89e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FastForwardSpeed: 20
-  maxSanity: 1
+  FastForwardSpeed: 1
+  maxSanity: 40
 --- !u!114 &1457781594
 MonoBehaviour:
   m_ObjectHideFlags: 0

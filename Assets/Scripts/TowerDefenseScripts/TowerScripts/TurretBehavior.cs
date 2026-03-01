@@ -56,7 +56,7 @@ public class TurretBehavior : MonoBehaviour
 
     private void Update()
     {
-        if(target == null)
+        if (target == null)
         {
             FindTarget();
             return;
@@ -72,7 +72,7 @@ public class TurretBehavior : MonoBehaviour
         {
             timeUntilFire += Time.deltaTime;
 
-            if(timeUntilFire >= 1f / bps)
+            if (timeUntilFire >= 1f / bps)
             {
                 StartCoroutine(startShoot());
                 Shoot();
@@ -94,7 +94,7 @@ public class TurretBehavior : MonoBehaviour
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
-        if(hits.Length > 0)
+        if (hits.Length > 0)
         {
             target = hits[0].transform;
         }
@@ -146,13 +146,48 @@ public class TurretBehavior : MonoBehaviour
     }
 
 
+    public void OpenUpgradeUI()
+    {
+        upgradeUI.SetActive(true);
+    }
+
+    public void CloseUpgradeUI()
+    {
+        upgradeUI.SetActive(false);
+    }
+
+    public void Upgrade()
+    {
+        SanityValue.SpendSanity(CalculateCost());
+        level++;
+        bps = CalculateBps();
+        //targetingRange = CalculateRange(); -- For increasing range of a turret. Only increase firing rate at first)
+
+        CloseUpgradeUI();
+    }
+
+    private int CalculateCost(){
+        return Mathf.RoundToInt(baseUpgradeCost*Mathf.Pow(level, 0.8f));
+    }
+
+    private float CalculateBps(){
+        return bpsBase*Mathf.Pow(level, 0.6f);
+    }
+
+    private float CalculateRange(){
+       return targetingRangeBase*Mathf.Pow(level, 0.4f);
+    }
+
+
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        
+
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 
     }
+#endif
 
     void OnMouseEnter()
     {
