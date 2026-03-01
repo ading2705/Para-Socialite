@@ -44,9 +44,8 @@ public class Draggable : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other) return;
+        
         Draggable collidedDraggable = other.GetComponent<Draggable>();
-        if (!_dragController || !_dragController.LastDraggable || !_dragController.LastDraggable.gameObject) return;
         if (collidedDraggable != null && _dragController.LastDraggable.gameObject == gameObject)
         {
             ColliderDistance2D colliderDistance2D = other.Distance(_collider);

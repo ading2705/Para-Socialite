@@ -64,17 +64,40 @@ public class DragController : MonoBehaviour
         }
         else
         {
-          RaycastHit2D hit = Physics2D.Raycast(_worldPosition, Vector2.zero);
-          if(hit.collider != null)
+            Draggable draggable = FindDraggableAtPointer();
+            if(draggable != null)
             {
-                Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
-                if(draggable != null)
-                {
-                    _lastDragged = draggable;
-                    InitDrag();
-                }
-            }  
+                _lastDragged = draggable;
+                InitDrag();
+            }
         }
+    }
+    /*
+    Basically this function checks what is under the mouse pointer and return the Draggable if one exists.
+    RaycastHit2D[] Cast a ray at _worldPosition and detect ALL colliders there.
+    draggable = hit.collider.GetComponentInParent<Draggable>(); This is used to prevent
+    Clicking a child collider and failing to detect the turret
+    */
+    private Draggable FindDraggableAtPointer()
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(_worldPosition, Vector2.zero);
+        foreach (RaycastHit2D hit in hits)
+        {
+            
+
+            Draggable draggable = hit.collider.GetComponent<Draggable>();
+            if (draggable == null)
+            {
+                draggable = hit.collider.GetComponentInParent<Draggable>();
+            }
+
+            if (draggable != null)
+            {
+                return draggable;
+            }
+        }
+
+        return null;
     }
     void InitDrag(){
 
