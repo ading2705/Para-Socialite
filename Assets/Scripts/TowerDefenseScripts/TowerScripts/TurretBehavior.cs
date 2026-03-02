@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
+using System.Runtime.Serialization;
 
 public class TurretBehavior : MonoBehaviour
 {
@@ -9,20 +11,10 @@ public class TurretBehavior : MonoBehaviour
     [SerializeField] private GameObject _highlight;
     // HP cost consumed when placement is confirmed.
     [SerializeField] private int healthCost = 2;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite stillSprite;
+    [SerializeField] private Sprite shootSprite;
 
-
-    void OnMouseEnter()
-    {
-
-        if (_highlight != null)
-            _highlight.SetActive(true);
-    }
-
-    void OnMouseExit()
-    {
-        if (_highlight != null)
-            _highlight.SetActive(false);
-    }
 
     //start of turret behaviour for gameplay
     [Header("References")]
@@ -30,15 +22,37 @@ public class TurretBehavior : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
+    [SerializeField] private GameObject upgradeUI;
+    [SerializeField] private Button upgradeButton;
+    private StateManager SanityValue;
+
 
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float rotationSpeed = 200f;
     [SerializeField] private float bps = 1f; //bullet per second
+    [SerializeField] private int baseCost = 3;
+    [SerializeField] private int baseUpgradeCost = 2;
+
+    private float bpsBase;
+    private float targetingRangeBase;
 
 
     private Transform target;
     private float timeUntilFire;
+
+    private int level = 1;
+
+    private void Start()
+    {
+        bpsBase = bps;
+        targetingRangeBase = targetingRange;
+        GameObject stateManager = GameObject.FindWithTag("HealthBar");
+        SanityValue = stateManager.GetComponent<StateManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        upgradeButton.onClick.AddListener(Upgrade);
+    }
 
     private void Update()
     {
@@ -60,14 +74,17 @@ public class TurretBehavior : MonoBehaviour
 
             if (timeUntilFire >= 1f / bps)
             {
+                StartCoroutine(startShoot());
                 Shoot();
                 timeUntilFire = 0f;
+                StopCoroutine(startShoot());
             }
         }
     }
 
     private void Shoot()
     {
+
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
@@ -96,6 +113,42 @@ public class TurretBehavior : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
+    public void OpenUpgradeUI()
+    {
+        upgradeUI.SetActive(true);
+    }
+
+    public void CloseUpgradeUI()
+    {
+        upgradeUI.SetActive(false);
+    }
+
+    public void Upgrade()
+    {
+        SanityValue.SpendSanity(CalculateCost());
+        level++;
+        bps = CalculateBps();
+        //targetingRange = CalculateRange(); -- For increasing range of a turret. Only increase firing rate at first)
+
+        CloseUpgradeUI();
+    }
+
+    private int CalculateCost()
+    {
+        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 0.8f));
+    }
+
+    private float CalculateBps()
+    {
+        return bpsBase * Mathf.Pow(level, 0.6f);
+    }
+
+    private float CalculateRange()
+    {
+        return targetingRangeBase * Mathf.Pow(level, 0.4f);
+    }
+
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
@@ -106,6 +159,35 @@ public class TurretBehavior : MonoBehaviour
     }
 #endif
 
+    void OnMouseEnter()
+    {
+
+        if (_highlight != null)
+            _highlight.SetActive(true);
+    }
+
+    void OnMouseExit()
+    {
+        if (_highlight != null)
+            _highlight.SetActive(false);
+        CloseUpgradeUI();
+    }
+
+
+    void OnMouseDown()
+    {
+        if (this.CompareTag("IsUpgradable"))
+        {
+            this.OpenUpgradeUI();
+        }
+    }
+
+    IEnumerator startShoot()
+    {
+        spriteRenderer.sprite = shootSprite;
+        yield return new WaitForSeconds(bps / 2);
+        spriteRenderer.sprite = stillSprite;
+    }
 
 
 }
