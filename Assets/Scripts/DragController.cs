@@ -112,6 +112,7 @@ public class DragController : MonoBehaviour
     public void YesClicked()
     {
         myConfirmationWindow.gameObject.SetActive(false);
+        LastDraggable.tag = "IsUpgradable";
         Destroy(LastDraggable);
         deactivateSpawner1.SetActive(true);
         deactivateSpawner2.SetActive(true);
