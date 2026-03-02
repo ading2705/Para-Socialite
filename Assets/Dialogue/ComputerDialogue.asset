@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ComputerDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - 
-  - 
+  - I've been getting a lot of traction on my page recently.
+  - Having more fans means I might have to do more interactions...
+  - <color=#0000FF> shudders
   responses: []
